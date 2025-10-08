@@ -1,0 +1,110 @@
+{% extends 'users/userbase.html'%}
+{%block contents%}
+
+
+  <!DOCTYPE html>
+  <html>
+  <style>
+  input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  input[type=submit]:hover {
+    background-color: #45a049;
+  }
+  
+  .formDiv {
+    margin: 0 200px;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+  }
+
+
+  /* Additional CSS styles */
+.strength-bar {
+    margin-top: 20px;
+    width: 300px;
+    height: 20px;
+    border: 1px solid #ccc;
+    position: relative;
+}
+
+.strength-level {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    line-height: 20px;
+    font-weight: bold;
+}
+
+/* Strength level-specific colors */
+.strong {
+    background-color: green;
+    color: white;
+}
+
+.moderate {
+    background-color: yellow;
+    color: black;
+}
+
+.weak {
+    background-color: red;
+    color: white;
+}
+
+  </style>
+  <body>
+    <div class="formDiv">
+      <center><h2>Prediction Result</h2></center>
+      <center>
+          <p style="font-size: larger;">
+              The predicted strength of the password is:
+              <span style="color: red;"><b>
+                  {% if prediction == 2 %}
+                      Password is Strong 
+                  {% elif prediction == 1 %}
+                      Password is Moderate
+                  {% else %}
+                      Password is Weak
+                  {% endif %}
+              </b></span>
+          </p>
+          <button onclick="goBack()">Back to Prediction Form</button>
+      </center>
+  </div>
+  
+  <script>
+      function goBack() {
+          // You can adjust this URL to point back to your prediction form
+          window.location.href = "{% url 'prediction' %}";
+      }
+  </script>
+  
+  </body>
+  </html>
+  
+  
+  
+
+
+{%endblock%}

@@ -1,0 +1,108 @@
+{% extends 'users/userbase.html' %}
+{% block contents %}
+
+<style>
+    /* Style for the background image container */
+    .background-container {
+        position: relative;
+        text-align: center;
+        color: white;
+        width: 100%;
+    }
+
+    /* Style for the background image */
+    .background-image {
+        width: 100%;
+    }
+
+    /* Style for the card */
+    .card {
+        width: 800px; /* Adjust width as needed */
+        height: 200px; /* Adjust height as needed */
+        background-color: rgba(114, 232, 243, 0.9); /* Card background color */
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow for a raised effect */
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Style for the form */
+    .form-overlay {
+        display: flex;
+        flex-direction: column; /* Arrange items in a column */
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+        padding: 20px;
+    }
+
+    /* Style for form elements (example styles) */
+    .form-overlay label,
+    .form-overlay input[type="text"],
+    .form-overlay input[type="submit"] {
+        margin: 5px;
+    }
+
+    /* Additional styles for the input group */
+    .input-group {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .input-group label {
+        margin-right: 10px;
+    }
+</style>
+
+<div class="background-container">
+    <img src="/static/assets/img/predbg.jpg" alt="Background Image" class="background-image">
+
+    <!-- Card overlay -->
+    <div class="card">
+        <div class="form-overlay">
+            <h2 style="color: brown;">Password Strength</h2>
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="input-group">
+                    <label for="password" style="color: black;">Password:</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                    <input type="submit" value="Submit">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- 
+<script>
+    function validatePassword() {
+        var password = document.getElementById("password").value;
+
+        // Password validation criteria (you can adjust these criteria as needed)
+        var minLength = 8;
+        var hasUpperCase = /[A-Z]/.test(password);
+        var hasLowerCase = /[a-z]/.test(password);
+        var hasNumber = /\d/.test(password);
+        var hasSpecialChar = /[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]/.test(password);
+
+        if (password.length < minLength) {
+            alert("Password must be at least " + minLength + " characters long");
+            return false;
+        }
+
+        if (!(hasUpperCase && hasLowerCase && hasNumber && hasSpecialChar)) {
+            alert("Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character");
+            return false;
+        }
+
+        return true; // Form will submit if password meets criteria
+    }
+</script> -->
+
+
+{% endblock %}

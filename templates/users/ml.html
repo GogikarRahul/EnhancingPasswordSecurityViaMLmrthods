@@ -1,0 +1,43 @@
+{%extends 'users/userbase.html'%}
+{%block contents%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML Results</title>
+</head>
+<body>
+    
+    <h1 style="margin-left: 500px; margin-top: 20px;">Model Performance Metrics</h1>
+
+    <table border="1" style="margin:auto;">
+        <thead>
+            <tr>
+                <th style="margin-left: 10px;">Model</th>
+                <th>Accuracy</th>
+                <th>Classification Report</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for model, metrics in results.items %}
+                <tr>
+                    <td><b>{{ model }}</b></td>
+                    <td><span style="color: brown;"><b>{{ metrics.accuracy }}</b></span></td>
+                    <td>
+                        <pre>{{ metrics.report }}</pre>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+         
+    </table>
+
+    
+</body>
+</html>
+
+
+
+{%endblock%}
